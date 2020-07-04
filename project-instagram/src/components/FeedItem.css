@@ -1,0 +1,73 @@
+.myfeedItem {
+	display: block;
+	padding: 20px 10px;
+	border: 1px solid #e0e0e0;
+	border-radius: 10px;
+	background: #fff;
+	color: #2f332f;
+}
+.myfeedItem .myfeedTitleDate {
+	font-size: 12px;
+	line-height: 16px;
+	text-align: right;
+	vertical-align: top;
+}
+
+.myfeedItem .myfeedCont {
+	margin-top: 10px;
+}
+.myfeedItem .myfeedImg {
+	overflow: hidden;
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	padding-bottom: 100%;
+	border-radius: 10px;
+	font-size: 0;
+	vertical-align: top;
+}
+.myfeedItem .myfeedImg:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.03);
+	z-index: 3;
+}
+.myfeedItem .myfeedImg img {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+.myfeedItem .myfeedTitle {
+	display: block;
+	margin-top: 10px;
+	font-family: "S-CoreDream-5Medium";
+	font-size: 15px;
+	color: #2f332f;
+	display: block;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.myfeedItem .myfeedDetail {
+	display: block;
+	margin-top: 10px;
+	color: #666;
+	font-size: 13px;
+	line-height: 1.5;
+	display: -webkit-box;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	white-space: normal;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
