@@ -15,23 +15,20 @@ class App extends Component {
 				<ul className='projcetNav'>
 					<li>
 						<NavLink exact to='/' activeClassName="active">
-							# Instagram
+							<span>#</span> Instagram
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to='/twitter' activeClassName="active">
-							# Twitter
+							<span>#</span> Twitter
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to='/youtube' activeClassName="active">
-							# Youtube
+							<span>#</span> Youtube
 						</NavLink>
 					</li>
 				</ul>
-				{/* <Instagram />
-				<Twitter />
-				<Youtube /> */}
 				<Switch>
 					<Route exact path='/' component={Instagram} />
 					<Route path='/twitter' component={Twitter} />

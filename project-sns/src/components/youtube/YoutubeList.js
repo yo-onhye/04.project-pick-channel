@@ -8,7 +8,7 @@ class YoutubeList extends Component {
 
 	render() {
 		return (
-			<section class="projectSection">
+			<section className="projectSection">
 				<div className="sectionTitle">
 					<h2>Youtube</h2>
 				</div>

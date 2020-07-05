@@ -16,7 +16,7 @@ class InstaFeedItem extends Component {
 					<p className='myfeedDate'>{date}</p>
 				</div>
 				<div className='myfeedCont'>
-					<span className='myfeedImg'>
+					<span className='myfeedMedia'>
 						<img src={img} alt={alt} />
 					</span>
 					<p className='myfeedLike'>좋아요 {like} 개</p>
