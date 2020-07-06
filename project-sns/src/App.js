@@ -14,25 +14,26 @@ class App extends Component {
 				</div>
 				<ul className='projcetNav'>
 					<li>
-						<NavLink exact to='/' activeClassName="active">
+						<NavLink exact to='/rw/instagram' activeClassName="active">
 							<span>#</span> Instagram
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to='/twitter' activeClassName="active">
+						<NavLink to='/rw/twitter' activeClassName="active">
 							<span>#</span> Twitter
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to='/youtube' activeClassName="active">
+						<NavLink to='/rw/youtube' activeClassName="active">
 							<span>#</span> Youtube
 						</NavLink>
 					</li>
 				</ul>
 				<Switch>
 					<Route exact path='/' component={Instagram} />
-					<Route path='/twitter' component={Twitter} />
-					<Route path='/youtube' component={Youtube} />
+					<Route path='/rw/instagram' component={Instagram} />
+					<Route path='/rw/twitter' component={Twitter} />
+					<Route path='/rw/youtube' component={Youtube} />
 					<Route render={() => <div className="projectError">404 NOT FOUND :(</div>} />
 				</Switch>
 			</div>
