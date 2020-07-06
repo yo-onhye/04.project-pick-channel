@@ -8,20 +8,23 @@ class InstaFeedItem extends Component {
 	}
 
 	render() {
-		const { owner, title, date, img, alt, like } = this.props.data;
+		const { owner, title, date, link, img, video, alt, like } = this.props.data;
 		return (
 			<div className='myfeedItem'>
-				<div className='myfeedTop'>
-					<p className='myfeedOwner'>{owner}</p>
-					<p className='myfeedDate'>{date}</p>
-				</div>
-				<div className='myfeedCont'>
-					<span className='myfeedMedia'>
-						<img src={img} alt={alt} />
-					</span>
-					<p className='myfeedLike'>좋아요 {like} 개</p>
-					<p className='myfeedTitle'>{title}</p>
-				</div>
+				<a href={link}>
+					<div className='myfeedTop'>
+						<p className='myfeedOwner'>{owner}</p>
+						<p className='myfeedDate'>{date}</p>
+					</div>
+					<div className='myfeedCont'>
+							<span className='myfeedMedia'>
+								{!img == "" && <img src={img} alt={alt} />}
+								{!video == "" && <video src={video} title={alt} playsInline autoPlay />}
+							</span>
+						<p className='myfeedLike'>좋아요 {like} 개</p>
+						<p className='myfeedTitle'>{title}</p>
+					</div>
+				</a>
 			</div>
 		);
 	}

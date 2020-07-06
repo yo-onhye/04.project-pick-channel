@@ -8,23 +8,26 @@ class TwitterFeedItem extends Component {
 	}
 
 	render() {
-		const { owner, title, date, img, alt, like, retweet } = this.props.data;
+		const { owner, title, profile, date, link, img, alt, like, retweet } = this.props.data;
 		return (
 			<div className='myfeedItem'>
-				<div className='myfeedTop'>
-					<p className='myfeedOwner'>{owner}</p>
-					<p className='myfeedDate'>{date}</p>
-				</div>
-				<div className='myfeedCont'>
-					<p className='myfeedTitle'>{title}</p>
-					<div className='myfeedMedia'>
-						{!img == "" && <img src={img} alt={alt} />}
+				<a href={link}>
+					<div className='myfeedTop'>
+						<span className="myfeedProfile"><img src={profile} alt="" /></span>
+						<p className='myfeedOwner'>{owner}</p>
+						<p className='myfeedDate'>{date}</p>
 					</div>
-					<div className="myfeedCount">
-						<span className="myfeedCountCell">좋아요 {like}</span>
-						<span className="myfeedCountCell">리트윗 {retweet}</span>
+					<div className='myfeedCont'>
+						<p className='myfeedTitle'>{title}</p>
+							<span className='myfeedMedia'>
+								<img src={img} alt={alt} />
+							</span>
+						<div className="myfeedCount">
+							<span className="myfeedCountCell">좋아요 {like}</span>
+							<span className="myfeedCountCell">리트윗 {retweet}</span>
+						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 		);
 	}
