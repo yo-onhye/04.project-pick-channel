@@ -14,7 +14,7 @@ class TwitterFeedList extends Component {
 				loading: true,
 			});
 
-			const response = await axios.get('http://yo-onhye.github.io/00.temp/json/TwitterDatas.json');
+			const response = await axios.get('https://yo-onhye.github.io/00.temp/json/TwitterDatas.json');
 
 			this.setState({
 				tiwitterDatas: response.data,

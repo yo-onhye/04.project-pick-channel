@@ -14,7 +14,7 @@ class InstaFeedList extends Component {
 				loading: true,
 			});
 
-			const response = await axios.get('http://yo-onhye.github.io/00.temp/json/InstagramDatas.json');
+			const response = await axios.get('https://yo-onhye.github.io/00.temp/json/InstagramDatas.json');
 
 			this.setState({
 				instaDatas: response.data,
