@@ -238,6 +238,8 @@ legend:before {
 	content: "";
 }
 .myfeedList {
+	column-count: 3;
+	column-gap: 0;
 	width: 100%;
 	margin: 0 -3px;
 	padding: 0;
@@ -245,8 +247,10 @@ legend:before {
 }
 .myfeedList li {
 	display: inline-block;
-	width: 33.33%;
+	width: 100%;
 	padding: 5px;
+	-webkit-transition: 1s ease all;
+	transition: 1s ease all;
 	box-sizing: border-box;
 	vertical-align: top;
 }
@@ -254,16 +258,32 @@ legend:before {
 /* List Item */
 .myfeedItem {
 	display: block;
-	border: 1px solid #e0e0e0;
-	border-radius: 10px;
 	background: #fff;
 	color: #2f332f;
 	font-size: 12px;
 }
 .myfeedItem a {
+	overflow: hidden;
+	position: relative;
 	display: block;
 	padding: 20px 10px;
+	border: 1px solid #e0e0e0;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	position: relative;
+	border-radius: 10px;
 }
+.myfeedItem a:hover,
+.myfeedItem a:focus{
+	box-shadow: 9px 9px 10px -10px rgba(0, 0, 0, 0.5);
+	scale: 1.5;
+}
+
+.myfeedItem a:hover .myfeedMedia img,
+.myfeedItem a:focus .myfeedMedia img{
+	transform: translateY(-50%) scale(1.1);
+}
+
 .myfeedItem .myfeedTop {
 	overflow: hidden;
 	line-height: 30px;
@@ -391,13 +411,13 @@ legend:before {
 }
 
 @media screen and (max-width: 768px) {
-	.myfeedList li {
-		width: 50%;
+	.myfeedList {
+		column-count: 2;
 	}
 }
 
 @media screen and (max-width: 440px) {
-	.myfeedList li {
-		width: 100%;
+	.myfeedList {
+		column-count: 1;
 	}
 }
