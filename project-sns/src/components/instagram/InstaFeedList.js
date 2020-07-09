@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Masonry from 'react-masonry-component';
 import InstaFeedItem from "./InstaFeedItem";
+
+const masonryOptions = {
+	transitionDuration: 0
+};
+ 
+const imagesLoadedOptions = { background: '.my-bg-image-el' }
 
 class InstaFeedList extends Component {
 	state = {
@@ -40,7 +47,6 @@ class InstaFeedList extends Component {
 		}
 	}
 
-
 	render() {
 		const { instaDatas, loading } = this.state;
 		return (
@@ -49,12 +55,17 @@ class InstaFeedList extends Component {
 					<h2>Instargram</h2>
 				</div>
 				{loading && <h3 className="myfeedInfotxt">데이터 로딩 중 입니다:D</h3>}
-				<ul className="myfeedList">
+				<Masonry
+						className={'myfeedList'}
+						elementType={'ul'}
+						options={masonryOptions}
+						imagesLoadedOptions={imagesLoadedOptions}
+				>
 					{!loading &&
-					instaDatas &&
-					!instaDatas.error &&
-					instaDatas.data.map(d => <li><InstaFeedItem key={d.id} data={d} /></li>)}
-				</ul>
+						instaDatas &&
+						!instaDatas.error &&
+						instaDatas.data.map(d => <li><InstaFeedItem key={d.id} data={d} /></li>)}
+				</Masonry>
 			</section>
 		);
 	}

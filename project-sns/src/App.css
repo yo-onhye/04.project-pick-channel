@@ -238,8 +238,6 @@ legend:before {
 	content: "";
 }
 .myfeedList {
-	column-count: 3;
-	column-gap: 0;
 	width: 100%;
 	margin: 0 -3px;
 	padding: 0;
@@ -247,10 +245,8 @@ legend:before {
 }
 .myfeedList li {
 	display: inline-block;
-	width: 100%;
+	width: 33.33%;
 	padding: 5px;
-	-webkit-transition: 1s ease all;
-	transition: 1s ease all;
 	box-sizing: border-box;
 	vertical-align: top;
 }
@@ -411,13 +407,13 @@ legend:before {
 }
 
 @media screen and (max-width: 768px) {
-	.myfeedList {
-		column-count: 2;
+	.myfeedList li {
+		width: 50%;
 	}
 }
 
 @media screen and (max-width: 440px) {
-	.myfeedList {
-		column-count: 1;
+	.myfeedList li {
+		width: 100%;
 	}
 }

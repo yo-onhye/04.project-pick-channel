@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import Masonry from 'react-masonry-component';
 import TwitterFeedItem from "./TwitterFeedItem";
+
+const masonryOptions = {
+	transitionDuration: 0
+};
+ 
+const imagesLoadedOptions = { background: '.my-bg-image-el' }
 
 class TwitterFeedList extends Component {
 	state = {
@@ -48,12 +55,17 @@ class TwitterFeedList extends Component {
 					<h2>Twitter</h2>
 				</div>
 				{loading && <h3 className="myfeedInfotxt">데이터 로딩 중 입니다:D</h3>}
-				<ul className="myfeedList">
+				<Masonry
+						className={'myfeedList'}
+						elementType={'ul'}
+						options={masonryOptions}
+						imagesLoadedOptions={imagesLoadedOptions}
+				>
 					{!loading &&
 					tiwitterDatas &&
 					!tiwitterDatas.error &&
 					tiwitterDatas.data.map(d => <li><TwitterFeedItem key={d.id} data={d} /></li>)}
-				</ul>
+				</Masonry>
 			</section>
 		);
 	}

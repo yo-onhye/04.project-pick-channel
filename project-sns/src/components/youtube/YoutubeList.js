@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Masonry from 'react-masonry-component';
 import YoutubeItem from "./YoutubeItem";
 import "./YoutubeList.css";
+
+const masonryOptions = {
+	transitionDuration: 0
+};
+ 
+const imagesLoadedOptions = { background: '.my-bg-image-el' }
 
 class YoutubeList extends Component {
 	state = {
@@ -46,7 +53,12 @@ class YoutubeList extends Component {
 					<h2>Youtube</h2>
 				</div>
 				{loading && <h3 className='myfeedInfotxt'>데이터 로딩 중 입니다:D</h3>}
-				<ul className='myYoutubeList'>
+				<Masonry
+						className={'myYoutubeList'}
+						elementType={'ul'}
+						options={masonryOptions}
+						imagesLoadedOptions={imagesLoadedOptions}
+				>
 					{!loading &&
 						youtubeDatas &&
 						!youtubeDatas.error &&
@@ -55,7 +67,7 @@ class YoutubeList extends Component {
 								<YoutubeItem key={d.position} owner={d.snippet.channelTitle} title={d.snippet.title} description={d.snippet.description} thumbnail={d.snippet.thumbnails.standard.url} videoId={d.snippet.resourceId.videoId} />
 							</li>
 						))}
-				</ul>
+				</Masonry>
 			</section>
 		);
 	}
