@@ -3,8 +3,7 @@
 ## Description.
 
 - `react-router-dom`으로  SNS별 페이지 나누어 노출 (인스타그램이 default)
-- 인스타그램에서 API 받아와 정보 노출 → 인스타그램 API 정책이 바뀌어 자체적으로 Json file 만들어 연결
-- 트위터에서 특정 계정 정보 받아와 노출 → 자체적으로 Json file 만들어 연결
+- 일부 SNS 연동 시 사용자 정보를 입력받아 불러올 수 없는 이슈가 있어, Youtube채널 ID 값을 입력받아 해당 채널 영상 최근 업로드 50개씩 불러올 수 있도록 기획 변경
 - Youtube에서 특정 계정 정보 받아와 노출 → FNC 계정 중 SF9 플레이리스트 가져와 연결
 - Skeleton Loader 구현
 
