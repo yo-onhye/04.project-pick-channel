@@ -50,7 +50,7 @@ class YoutubeList extends Component {
 		return (
 			<section className='projectSection'>
 				<div className='sectionTitle'>
-					<h2>Youtube</h2>
+					<h2>Channel01</h2>
 				</div>
 				{loading && <h3 className='myfeedInfotxt'>데이터 로딩 중 입니다:D</h3>}
 				<Masonry

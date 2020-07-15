@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Route, NavLink, Switch } from "react-router-dom";
-import Instagram from "./components/instagram";
-import Twitter from "./components/twitter";
 import Youtube from "./components/youtube";
 import "./App.css";
 
@@ -10,29 +8,29 @@ class App extends Component {
 		return (
 			<div className='projectMain'>
 				<div className="projcetLogo">
-					<h1>Rowoon<span>.</span></h1>
+					<h1>Pick Channel<span>.</span></h1>
 				</div>
 				<ul className='projcetNav'>
 					<li>
-						<NavLink exact to='/04.project-collect-sns' activeClassName="active">
-							<span>#</span> Instagram
+						<NavLink exact to='/Channel01' activeClassName="active">
+							<span>#</span> Channel01
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to='/04.project-collect-sns/twitter' activeClassName="active">
-							<span>#</span> Twitter
+						<NavLink to='/Channel02' activeClassName="active">
+							<span>#</span> Channel02
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to='/04.project-collect-sns/youtube' activeClassName="active">
-							<span>#</span> Youtube
+						<NavLink to='/Channel03' activeClassName="active">
+							<span>#</span> Channel03
 						</NavLink>
 					</li>
 				</ul>
 				<Switch>
-					<Route exact path='/04.project-collect-sns' component={Instagram} />
-					<Route path='/04.project-collect-sns/twitter' component={Twitter} />
-					<Route path='/04.project-collect-sns/youtube' component={Youtube} />
+					<Route exact path='/04.project-collect-sns' component={Youtube} />
+					<Route path='/04.project-collect-sns/Channel02' component={Youtube} />
+					<Route path='/04.project-collect-sns/Channel03' component={Youtube} />
 					<Route render={() => <div className="projectError">404 NOT FOUND :(</div>} />
 				</Switch>
 			</div>
