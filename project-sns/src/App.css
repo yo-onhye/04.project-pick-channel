@@ -160,6 +160,8 @@ legend:before {
 
 /* Common */
 .projectMain {
+	overflow: hidden;
+	position: relative;
 	display: block;
 	width: 90%;
 	max-width: 1280px;
@@ -181,20 +183,23 @@ legend:before {
 }
 
 .projcetNav {
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.projcetNavList {
 	display: table;
 	width: 100%;
 	height: 50px;
 	table-layout: fixed;
-	border-bottom: 1px solid #e0e0e0;
 }
 
-.projcetNav li {
+.projcetNavList li {
 	display: table-cell;
 	text-align: center;
 	vertical-align: middle;
 }
 
-.projcetNav a {
+.projcetNavList a {
 	display: inline-block;
 	padding: 0 5px;
 	color: #2f332f;
@@ -204,11 +209,11 @@ legend:before {
 	text-decoration: none;
 }
 
-.projcetNav span {
+.projcetNavList span {
 	color: #c5a76a;
 }
 
-.projcetNav a.active {
+.projcetNavList a.active {
 	box-shadow: inset 0 -2px #2f332f;
 	font-family: "S-CoreDream-5Medium";
 }

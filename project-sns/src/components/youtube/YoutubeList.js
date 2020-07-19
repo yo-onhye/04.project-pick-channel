@@ -59,14 +59,14 @@ class YoutubeList extends Component {
 						options={masonryOptions}
 						imagesLoadedOptions={imagesLoadedOptions}
 				>
-					{!loading &&
-						youtubeDatas &&
-						!youtubeDatas.error &&
-						youtubeDatas.map((d) => (
-							<li>
-								<YoutubeItem key={d.position} owner={d.snippet.channelTitle} title={d.snippet.title} description={d.snippet.description} thumbnail={d.snippet.thumbnails.standard.url} videoId={d.snippet.resourceId.videoId} />
-							</li>
-						))}
+				{!loading &&
+					youtubeDatas &&
+					!youtubeDatas.error &&
+					youtubeDatas.map((d) => (
+						<li>
+							<YoutubeItem key={d.position} owner={d.snippet.channelTitle} title={d.snippet.title} description={d.snippet.description} thumbnail={d.snippet.thumbnails.standard.url} videoId={d.snippet.resourceId.videoId} />
+						</li>
+					))}
 				</Masonry>
 			</section>
 		);

@@ -20,7 +20,7 @@ class YoutubeItem extends Component {
 					</div>
 					<div className='myYoutubeCont'>
 						<div className='myYoutubeMedia'>
-							{!thumbnail == "" && <img src={thumbnail} alt="" />}
+							{!thumbnail === "" && <img src={thumbnail} alt="" />}
 						</div>
 						<p className='myYoutubeTitle'>{title}</p>
 						<p className='myYoutubeDetail'>{description}</p>

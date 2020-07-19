@@ -1,0 +1,158 @@
+.projectLnb {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	-webkit-user-select: none;
+	user-select: none;
+}
+.projectLnb .projcetBtnNav {
+	overflow: visible;
+	position: absolute;
+	top: 13px;
+	right: 5px;
+	margin: 0;
+	padding: 7px;
+	border: 0;
+	background-color: transparent;
+	text-transform: none;
+	transition-property: opacity, filter;
+	transition-duration: 0.15s;
+	transition-timing-function: linear;
+	transform: scale(0.85);
+	z-index: 3;
+}
+.projcetBtnNav .projcetBtnBox {
+	position: relative;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+}
+.projcetBtnNav .projcetBtnInner {
+	display: block;
+	top: 50%;
+	margin-top: 0;
+	transition-duration: 0.075s;
+	transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.projcetBtnNav .projcetBtnInner,
+.projcetBtnNav .projcetBtnInner:before,
+.projcetBtnNav .projcetBtnInner:after {
+	position: absolute;
+	width: 30px;
+	height: 2px;
+	background-color: #c5a76a;
+	transition-property: transform;
+	transition-duration: 0.15s;
+	transition-timing-function: ease;
+}
+.projcetBtnNav .projcetBtnInner:before,
+.projcetBtnNav .projcetBtnInner:after {
+	display: block;
+	content: "";
+}
+.projcetBtnNav .projcetBtnInner:before {
+	top: -8px;
+	transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+}
+.projcetBtnNav .projcetBtnInner:after {
+	bottom: -8px;
+	transition: bottom 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.projectLnbInner {
+	position: absolute;
+	width: 300px;
+	padding: 70px 20px 30px;
+	background: #f9f8f7;
+	list-style-type: none;
+	-webkit-font-smoothing: antialiased;
+	transform-origin: 0% 0%;
+	transform: translate(0, 0);
+	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+.projectLnbInput {
+	position: relative;
+	padding-right: 30%;
+}
+.projectLnbInput input {
+	width: 100%;
+	height: 25px;
+	border: 0;
+	border-bottom: 1px solid #2f332f;
+	background-color: #fff;
+	font-size: 13px;
+	line-height: 25px;
+}
+.projectLnbInput .projectLnbBtn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 25%;
+	height: 25px;
+	border: 1px solid #2f332f;
+	border-radius: 4px;
+	background-color: #fff;
+	font-size: 13px;
+	line-height: 25px;
+	box-sizing: border-box;
+}
+.projectChannelList {
+	margin-top: 20px;
+}
+.projectChannelList li {
+	position: relative;
+	padding: 5px 24px 5px 0;
+	font-size: 15px;
+	line-height: 24px;
+}
+.projectChannelList a {
+	display: inline-block;
+	vertical-align: top;
+}
+.BtnChannelRemove {
+	position: absolute;
+	top: 5px;
+	right: 0;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	border: 1px solid #000;
+	border-radius: 50%;
+	background-color: #fff;
+	vertical-align: top;
+}
+.BtnChannelRemove:before,
+.BtnChannelRemove:after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 13px;
+	height: 1px;
+	border-radius: 4px;
+	background: #000;
+}
+.BtnChannelRemove:before {
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
+.BtnChannelRemove:after {
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+.projectLnb.is-active .projectLnbInner {
+	transform: translate(-100%, 0);
+}
+.projectLnb.is-active .projcetBtnNav .projcetBtnInner {
+	transform: rotate(45deg);
+	transition-delay: 0.12s;
+	transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.projectLnb.is-active .projcetBtnNav .projcetBtnInner:before {
+	top: 0;
+	opacity: 0;
+	transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+}
+.projectLnb.is-active .projcetBtnNav .projcetBtnInner:after {
+	bottom: 0;
+	transform: rotate(-90deg);
+	transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
