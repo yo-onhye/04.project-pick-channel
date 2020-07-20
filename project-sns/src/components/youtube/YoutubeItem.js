@@ -13,19 +13,17 @@ class YoutubeItem extends Component {
 		const profile = "https://yt3.ggpht.com/a/AATXAJwozH_Of4LYYnDnKGO-f2Z3wvq_v8SSakh20Y598g=s176-c-k-c0x00ffffff-no-rj-mo";
 		return (
 			<div className="myYoutubeItem">
-				<a href={`https://www.youtube.com/watch?v=${videoId}`}>
-					<div className='myYoutubeTop'>
-						<span className="myYoutubeProfile"><img src={profile} alt="" /></span>
-						<p className='myYoutubeOwner'>{owner}</p>
+				<div className='myYoutubeTop'>
+					<span className="myYoutubeProfile"><img src={profile} alt="" /></span>
+					<p className='myYoutubeOwner'>{owner}</p>
+				</div>
+				<div className='myYoutubeCont'>
+					<div className='myYoutubeMedia'>
+						<iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" />
 					</div>
-					<div className='myYoutubeCont'>
-						<div className='myYoutubeMedia'>
-							{!thumbnail === "" && <img src={thumbnail} alt="" />}
-						</div>
-						<p className='myYoutubeTitle'>{title}</p>
-						<p className='myYoutubeDetail'>{description}</p>
-					</div>
-				</a>
+					<p className='myYoutubeTitle'>{title}</p>
+					<p className='myYoutubeDetail'>{description}</p>
+				</div>
 			</div>
 		);
 	}

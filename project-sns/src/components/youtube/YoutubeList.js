@@ -14,6 +14,7 @@ class YoutubeList extends Component {
 	state = {
 		loading: false,
 		youtubeDatas: null,
+		channelId: 'PLb1jnpdlalE3wHJku6YPk90Q-U5p1_fxZ',
 	};
 
 	getData = async () => {
@@ -22,7 +23,9 @@ class YoutubeList extends Component {
 				loading: true,
 			});
 
-			const response = await axios.get("https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLb1jnpdlalE3wHJku6YPk90Q-U5p1_fxZ&maxResults=50&key=AIzaSyC3dYrIaoJUiV8HSSeJvje5ZPOB0zQPVLs");
+			const { channelId } = this.state;
+
+			const response = await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${channelId}&maxResults=50&key=AIzaSyC3dYrIaoJUiV8HSSeJvje5ZPOB0zQPVLs`);
 
 			this.setState({
 				youtubeDatas: response.data.items,
