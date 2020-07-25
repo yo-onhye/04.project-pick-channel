@@ -159,6 +159,10 @@ legend:before {
 }
 
 /* Common */
+#root {
+	overflow: hidden;
+	position: relative;
+}
 .projectMain {
 	display: block;
 	width: 90%;

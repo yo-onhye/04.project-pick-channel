@@ -78,20 +78,24 @@
 	width: 100%;
 	height: 25px;
 	border: 0;
-	border-bottom: 1px solid #2f332f;
+	border-bottom: 1px solid #e0e0e0;
 	background-color: #fff;
 	font-size: 13px;
 	line-height: 25px;
+}
+.projectLnbInput input + input {
+	margin-top: 5px;
 }
 .projectLnbInput .projectLnbBtn {
 	position: absolute;
 	top: 0;
 	right: 0;
 	width: 25%;
-	height: 25px;
-	border: 1px solid #2f332f;
+	height: 100%;
+	border: 1px solid #e0e0e0;
 	border-radius: 4px;
 	background-color: #fff;
+	color: #828482;
 	font-size: 13px;
 	line-height: 25px;
 	box-sizing: border-box;
@@ -116,7 +120,7 @@
 	display: inline-block;
 	width: 24px;
 	height: 24px;
-	border: 1px solid #000;
+	border: 1px solid #e0e0e0;
 	border-radius: 50%;
 	background-color: #fff;
 	vertical-align: top;
@@ -130,7 +134,7 @@
 	width: 13px;
 	height: 1px;
 	border-radius: 4px;
-	background: #000;
+	background: #e0e0e0;
 }
 .BtnChannelRemove:before {
 	transform: translate(-50%, -50%) rotate(-45deg);
