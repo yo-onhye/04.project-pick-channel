@@ -14,7 +14,6 @@ class YoutubeList extends Component {
 	state = {
 		loading: false,
 		youtubeDatas: null,
-		channelId: 'PLb1jnpdlalE3wHJku6YPk90Q-U5p1_fxZ',
 	};
 
 	getData = async () => {
@@ -23,7 +22,7 @@ class YoutubeList extends Component {
 				loading: true,
 			});
 
-			const { channelId } = this.state;
+			const { channelId } = this.props;
 
 			const response = await axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${channelId}&maxResults=50&key=AIzaSyC3dYrIaoJUiV8HSSeJvje5ZPOB0zQPVLs`);
 
@@ -53,7 +52,7 @@ class YoutubeList extends Component {
 		return (
 			<section className='projectSection'>
 				<div className='sectionTitle'>
-					<h2>Channel01</h2>
+					<h2>Youtube</h2>
 				</div>
 				{loading && <h3 className='myfeedInfotxt'>데이터 로딩 중 입니다:D</h3>}
 				<Masonry
@@ -62,14 +61,14 @@ class YoutubeList extends Component {
 						options={masonryOptions}
 						imagesLoadedOptions={imagesLoadedOptions}
 				>
-				{!loading &&
-					youtubeDatas &&
-					!youtubeDatas.error &&
-					youtubeDatas.map((d) => (
-						<li>
-							<YoutubeItem key={d.position} owner={d.snippet.channelTitle} title={d.snippet.title} description={d.snippet.description} thumbnail={d.snippet.thumbnails.standard.url} videoId={d.snippet.resourceId.videoId} />
-						</li>
-					))}
+					{!loading &&
+						youtubeDatas &&
+						!youtubeDatas.error &&
+						youtubeDatas.map((d) => (
+							<li>
+								<YoutubeItem key={d.position} owner={d.snippet.channelTitle} title={d.snippet.title} description={d.snippet.description} thumbnail={d.snippet.thumbnails.standard.url} videoId={d.snippet.resourceId.videoId} />
+							</li>
+						))}
 				</Masonry>
 			</section>
 		);

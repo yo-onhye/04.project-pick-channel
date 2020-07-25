@@ -9,8 +9,8 @@ class YoutubeItem extends Component {
 	}
 
 	render() {
-		const { owner, title, description, thumbnail, videoId } = this.props;
-		const profile = "https://yt3.ggpht.com/a/AATXAJwozH_Of4LYYnDnKGO-f2Z3wvq_v8SSakh20Y598g=s176-c-k-c0x00ffffff-no-rj-mo";
+		const { owner, title, description, videoId } = this.props;
+		const profile = "https://yt3.ggpht.com/a/AATXAJxm7wEEy5A7qu3-C4TxQ4Xzp6OTPRC5KWxINhEeVw=s100-c-k-c0xffffffff-no-rj-mo";
 		return (
 			<div className="myYoutubeItem">
 				<div className='myYoutubeTop'>
@@ -19,7 +19,7 @@ class YoutubeItem extends Component {
 				</div>
 				<div className='myYoutubeCont'>
 					<div className='myYoutubeMedia'>
-						<iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" />
+						<iframe width="100%" height="100%" src={`https://www.youtube.com/embed/${videoId}`} title={title} frameBorder="0" />
 					</div>
 					<p className='myYoutubeTitle'>{title}</p>
 					<p className='myYoutubeDetail'>{description}</p>
