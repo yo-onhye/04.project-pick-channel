@@ -12,13 +12,13 @@ class App extends Component {
 		channelDatas: [
 			{
 				id: 0,
-				channelId: 'OLAK5uy_lAWlPRIDBvK8hLsDB3FM_SGGl4bTaw0Jc',
-				channelName: '엣헴엣헴 신이나 핑크퐁 아기상어 가족동요',
+				channelId: 'PLr0T5CaHaPwVVVUeriESL3fyfF3eRUuHr',
+				channelName: '[🧑‍⚕️슬기로운 의사생활] 미도와 파라솔',
 			},
 			{
 				id: 1,
-				channelId: 'PLawdY97HdndQ8gtbO-zJIZjBkyHsmtsQu',
-				channelName: '뽀로로 상어 동요',
+				channelId: 'PLdyB3s37qpTPuJSn-LjZqBFuf7u-XmA1z',
+				channelName: '사이코지만 괜찮아',
 			}
 		],
 		isShow: false,
@@ -77,23 +77,25 @@ class App extends Component {
 				<div className="projcetLogo">
 					<h1>Pick Channel<span>.</span></h1>
 				</div>
-				<ul className='projcetNav'>
-					{channelDatas.map((d) => {
-						return (
-							<li>
-								<NavLink to={`/04.project-pick-channel/${d.id}`} activeClassName="active">
-									<span>#</span> {d.channelName}
-								</NavLink>
-							</li>
-						);
-					})}
-				</ul>
+				<nav className='projcetNav'>
+					<ul className='projcetNavList'>
+						{channelDatas.map((d) => {
+							return (
+								<li key={d.id} >
+									<NavLink to={`/04.project-pick-channel/${d.id}`} activeClassName="active">
+										<span>#</span> {d.channelName}
+									</NavLink>
+								</li>
+							);
+						})}
+					</ul>
+				</nav>
 				<Lnb channelId={channelId} channelName={channelName} data={channelDatas} isShow={isShow} onActiveLnb={this.handleLnb} onInsert={this.handleInsert} onChange={this.handleChange} onDelete={this.handleDelete} />
 				<Switch>
-					<Route exact path='/' render={() => <div className="projectError">메인화면</div>} />
+					<Route exact path='/04.project-collect-sns' render={() => <div className="projectError">메인화면</div>} />
 					{channelDatas.map((d) => {
 						return (
-							<Route path={`/04.project-pick-channel/${d.id}`} render={() => <Youtube channelName={d.channelName} hannelId={d.channeId} /> }/>
+							<Route path={`/04.project-pick-channel/${d.id}`} render={() => <Youtube channelName={d.channelName} channelId={d.channelId} /> }/>
 						);
 					})}
 					<Route render={() => <div className="projectError">404 NOT FOUND :(</div>} />

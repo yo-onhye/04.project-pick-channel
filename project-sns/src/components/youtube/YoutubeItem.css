@@ -30,11 +30,10 @@
 	vertical-align: top;
 }
 .myYoutubeItem .myYoutubeOwner {
-	display: inline-block;
 	font-family: "S-CoreDream-5Medium";
-	font-size: 15px;
-	line-height: 30px;
-	vertical-align: top;
+	color: #2f332f;
+	font-size: 14px;
+	line-height: 1.5;
 }
 .myYoutubeItem .myYoutubeCont {
 	margin-top: 15px;
@@ -66,13 +65,15 @@
 	width: 100%;
 	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
+	z-index: 4;
 }
 .myYoutubeItem .myYoutubeTitle {
-	font-family: "S-CoreDream-5Medium";
-	color: #2f332f;
 	margin-top: 15px;
-	font-size: 14px;
-	line-height: 1.5;
+	display: inline-block;
+	font-family: "S-CoreDream-5Medium";
+	font-size: 13px;
+	line-height: 30px;
+	vertical-align: top;
 }
 .myYoutubeItem .myYoutubeDetail {
 	overflow: hidden;
@@ -80,7 +81,7 @@
 	display: block;
 	display: -webkit-box;
 	max-width: 100%;
-	margin-top: 15px;
+	margin-top: 5px;
 	color: #666;
 	font-size: 12px;
 	line-height: 18px;

@@ -12,8 +12,8 @@ const imagesLoadedOptions = { background: '.my-bg-image-el' }
 
 class YoutubeList extends Component {
 	state = {
-		loading: false,
 		youtubeDatas: null,
+		loading: false,
 	};
 
 	getData = async () => {
@@ -42,7 +42,7 @@ class YoutubeList extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		if (this.props.youtubeDatas !== prevProps.youtubeDatas) {
+		if (this.props.channelId !== prevProps.channelId) {
 			this.getData();
 		}
 	}
@@ -55,7 +55,12 @@ class YoutubeList extends Component {
 				<div className='sectionTitle'>
 					<h2>{channelName}</h2>
 				</div>
-				{loading && <h3 className='myfeedInfotxt'>데이터 로딩 중 입니다:D</h3>}
+				{loading && 
+					<div className="LoadingContainer">
+						<div className="LoadingAni"></div>
+						<h3 className='LoadingText'>Loading</h3>
+					</div>
+				}
 				<Masonry
 						className={'myYoutubeList'}
 						elementType={'ul'}
@@ -66,8 +71,8 @@ class YoutubeList extends Component {
 						youtubeDatas &&
 						!youtubeDatas.error &&
 						youtubeDatas.map((d) => (
-							<li>
-								<YoutubeItem key={d.position} owner={d.snippet.channelTitle} title={d.snippet.title} description={d.snippet.description} thumbnail={d.snippet.thumbnails.standard.url} videoId={d.snippet.resourceId.videoId} />
+							<li key={d.etag}>
+								<YoutubeItem owner={d.snippet.channelTitle} title={d.snippet.title} description={d.snippet.description} videoId={d.snippet.resourceId.videoId} />
 							</li>
 						))}
 				</Masonry>
