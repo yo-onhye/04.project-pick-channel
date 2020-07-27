@@ -55,27 +55,29 @@ class YoutubeList extends Component {
 				<div className='sectionTitle'>
 					<h2>{channelName}</h2>
 				</div>
-				{loading && 
-					<div className="LoadingContainer">
-						<div className="LoadingAni"></div>
-						<h3 className='LoadingText'>Loading</h3>
-					</div>
-				}
-				<Masonry
-						className={'myYoutubeList'}
-						elementType={'ul'}
-						options={masonryOptions}
-						imagesLoadedOptions={imagesLoadedOptions}
-				>
-					{!loading &&
-						youtubeDatas &&
-						!youtubeDatas.error &&
-						youtubeDatas.map((d) => (
-							<li key={d.etag}>
-								<YoutubeItem owner={d.snippet.channelTitle} title={d.snippet.title} description={d.snippet.description} videoId={d.snippet.resourceId.videoId} />
-							</li>
-						))}
-				</Masonry>
+				<div className='sectionCont'>
+					{loading && 
+						<div className="LoadingContainer">
+							<div className="LoadingAni"></div>
+							<h3 className='LoadingText'>Loading</h3>
+						</div>
+					}
+					<Masonry
+							className={'myYoutubeList'}
+							elementType={'ul'}
+							options={masonryOptions}
+							imagesLoadedOptions={imagesLoadedOptions}
+					>
+						{!loading &&
+							youtubeDatas &&
+							!youtubeDatas.error &&
+							youtubeDatas.map((d) => (
+								<li key={d.etag}>
+									<YoutubeItem owner={d.snippet.channelTitle} title={d.snippet.title} description={d.snippet.description} videoId={d.snippet.resourceId.videoId} />
+								</li>
+							))}
+					</Masonry>
+				</div>
 			</section>
 		);
 	}

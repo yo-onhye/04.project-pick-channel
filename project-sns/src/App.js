@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { Route, NavLink, Switch } from "react-router-dom";
 import OutsideClickHandler from "react-outside-click-handler";
-import Youtube from "./components/youtube";
+import Login from "./components/login";
 import Lnb from "./components/lnb";
+import Youtube from "./components/youtube";
 import "./App.css";
 
 class App extends Component {
 	id = 2;
+	dataId = 2;
 	state = {
 		channelId: "",
 		channelName: "",
@@ -20,6 +22,18 @@ class App extends Component {
 				id: 1,
 				channelId: 'PLdyB3s37qpTPuJSn-LjZqBFuf7u-XmA1z',
 				channelName: '사이코지만 괜찮아',
+			}
+		],
+		userDatas: [
+			{
+				dataId: 0,
+				userId: 'user111',
+				userPw: 'user111!',
+			},
+			{
+				dataId: 1,
+				userId: 'user222',
+				userPw: 'user222!',
 			}
 		],
 		isShow: false,
@@ -72,7 +86,7 @@ class App extends Component {
 	};
 
 	render() {
-		const { isShow, channelId, channelName, channelDatas } = this.state;
+		const { isShow, channelId, channelName, channelDatas, userDatas } = this.state;
 		return (
 			<div className='projectMain'>
 				<div className="projcetLogo">
@@ -91,11 +105,12 @@ class App extends Component {
 						})}
 					</ul>
 				</nav>
-				<OutsideClickHandler onOutsideClick={this.handleLnb}>
+				
+				<OutsideClickHandler onOutsideClick={isShow && this.handleLnb}>
 					<Lnb channelId={channelId} channelName={channelName} data={channelDatas} isShow={isShow} onActiveLnb={this.handleLnb} onInsert={this.handleInsert} onChange={this.handleChange} onDelete={this.handleDelete} />
 				</OutsideClickHandler>
 				<Switch>
-					<Route exact path='/04.project-collect-sns' render={() => <div className="projectError">메인화면</div>} />
+					<Route exact path='/04.project-pick-channel' render={() => <Login data={userDatas} />} />
 					{channelDatas.map((d) => {
 						return (
 							<Route path={`/04.project-pick-channel/${d.id}`} render={() => <Youtube channelName={d.channelName} channelId={d.channelId} /> }/>

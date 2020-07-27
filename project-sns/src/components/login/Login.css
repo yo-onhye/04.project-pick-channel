@@ -1,0 +1,221 @@
+.loginBox {
+	width: 90%;
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 40px 50px;
+	border: 1px solid #e0e0e0;
+	border-radius: 15px;
+	box-sizing: border-box;
+}
+
+.loginBox .loginList {
+	position: relative;
+	min-height: 40px;
+	margin-top: 25px;
+	font-size: 14px;
+	line-height: 1.5;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+.loginBox .loginList dt {
+	font-family: "S-CoreDream-5Medium", sans-serif;
+}
+
+.loginBox .loginList dd {
+	position: relative;
+	margin-top: 5px;
+}
+
+.loginBox .loginList dd .loginList_txt {
+	display: inline-block;
+	padding-top: 9px;
+}
+
+.loginBox .loginList:first-child {
+	margin: 0;
+}
+
+.projectInput {
+	position: relative;
+}
+
+.projectInput .projectInputText {
+	width: 100%;
+	height: 40px;
+	padding: 5px 0;
+	border: 0 none;
+	border-bottom: 1px solid #e0e0e0;
+	background: #fff;
+	font-size: 13px;
+	line-height: 30px;
+	vertical-align: top;
+	box-sizing: border-box;
+	outline: transparent;
+}
+
+.projectInput .projectInputText::placeholder,
+.projectInput .projectInputText::-webkit-input-placeholder {
+	color: #888;
+}
+
+.projectInput .projectInputText::-moz-placeholder {
+	color: #888;
+	opacity: 1;
+}
+
+.projectInput .projectInputText:-ms-input-placeholder {
+	color: #888;
+}
+
+.projectInput .projectInputText::-ms-clear {
+	display: none;
+}
+
+.projectInput .projectInputText:focus {
+	position: relative;
+	z-index: 1;
+	border-color: #2f332f;
+}
+
+.projectInput .projectInputText:disabled {
+	border-color: #f1f1f1;
+	background: #f9f9f9;
+	color: #888;
+}
+
+.projectInput .projectInputText[readonly="readonly"],
+.projectInput .projectInputText[readonly] {
+	z-index: 0;
+	border-color: #e0e0e0;
+}
+
+.projectInput .projectBtnClear {
+	display: none;
+	position: absolute;
+	z-index: 2;
+	top: 9px;
+	right: 5px;
+	width: 21px;
+	height: 21px;
+}
+
+.projectInput .projectBtnClear:before {
+	position: absolute;
+	top: 4px;
+	right: 10px;
+	width: 1px;
+	height: 13px;
+	background: #2f332f;
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	content: "";
+}
+
+.projectInput .projectBtnClear:after {
+	position: absolute;
+	top: 4px;
+	right: 10px;
+	width: 1px;
+	height: 13px;
+	background: #2f332f;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	content: "";
+}
+
+.projectInput .projectVaild {
+	display: none;
+	position: absolute;
+	z-index: 2;
+	top: 15px;
+	right: 10px;
+	width: 10px;
+	height: 5px;
+	border: 1px solid #3b574f;
+	border-width: 0 0 2px 2px;
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.projectInput .projectInvaild {
+	display: none;
+	position: absolute;
+	z-index: 2;
+	top: 18px;
+	right: 10px;
+	width: 11px;
+	height: 5px;
+}
+
+.projectInput .projectInvaild:before,
+.projectInput .projectInvaild:after {
+	content: "";
+	width: 15px;
+	height: 2px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	background: #a9372c;
+}
+
+.projectInput .projectInvaild:before {
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.projectInput .projectInvaild:after {
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.projectInput .projectVaildText,
+.projectInput .projectInvaildText {
+	display: none;
+}
+
+.projectInput.on_valid .projectInputText,
+.projectInput.on_invalid .projectInputText {
+	padding-right: 25px;
+}
+
+.projectInput.on_valid .projectInputText {
+	border-color: #3b574f;
+}
+
+.projectInput.on_valid .projectVaild {
+	display: block;
+}
+
+.projectInput.on_valid .projectVaildText {
+	display: block;
+}
+
+.projectInput.on_invalid .projectInputText {
+	border-color: #a9372c;
+}
+
+.projectInput.on_invalid .projectInvaild {
+	display: block;
+}
+
+.projectInput.on_invalid .projectInvaildText {
+	display: block;
+}
+
+.loginBtn {
+	display: inline-block;
+	width: 100%;
+	height: 50px;
+	margin-top: 50px;
+	border: none;
+	border-radius: 4px;
+	background: #3b574f;
+	color: #fff;
+	font-size: 14px;
+	line-height: 50px;
+	vertical-align: top;
+	text-align: center;
+	box-sizing: border-box;
+}

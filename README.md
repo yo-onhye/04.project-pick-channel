@@ -34,4 +34,8 @@ React, Axios, Route, JQuery, Css
 
 - LNB clickoutside 기능 추가
 
+**07.28**
+
+- 로그인 페이지 생성 및 페이지 연결
+
 ## Link.

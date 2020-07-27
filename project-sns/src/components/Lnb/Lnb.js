@@ -1,4 +1,5 @@
 import React, { Component, createRef } from "react";
+import { Link } from "react-router-dom";
 import "./Lnb.css";
 
 class Lnb extends Component {
@@ -27,13 +28,14 @@ class Lnb extends Component {
 							return (
 								<li key={d.id}>
 									<p>{d.channelName}</p>
-									<button type='button' className='BtnChannelRemove' onClick={() => onDelete(d.id)}>
+									<button type='button' className='ChannelRemoveBtn' onClick={() => onDelete(d.id)}>
 										<span className='blind'>삭제하기</span>
 									</button>
 								</li>
 							);
 						})}
 					</ul>
+					<Link to="/04.project-pick-channel" className="NavloginBtn">로그인</Link>
 				</div>
 			</div>
 		);
