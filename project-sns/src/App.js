@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, NavLink, Switch } from "react-router-dom";
+import OutsideClickHandler from "react-outside-click-handler";
 import Youtube from "./components/youtube";
 import Lnb from "./components/lnb";
 import "./App.css";
@@ -90,7 +91,9 @@ class App extends Component {
 						})}
 					</ul>
 				</nav>
-				<Lnb channelId={channelId} channelName={channelName} data={channelDatas} isShow={isShow} onActiveLnb={this.handleLnb} onInsert={this.handleInsert} onChange={this.handleChange} onDelete={this.handleDelete} />
+				<OutsideClickHandler onOutsideClick={this.handleLnb}>
+					<Lnb channelId={channelId} channelName={channelName} data={channelDatas} isShow={isShow} onActiveLnb={this.handleLnb} onInsert={this.handleInsert} onChange={this.handleChange} onDelete={this.handleDelete} />
+				</OutsideClickHandler>
 				<Switch>
 					<Route exact path='/04.project-collect-sns' render={() => <div className="projectError">메인화면</div>} />
 					{channelDatas.map((d) => {
