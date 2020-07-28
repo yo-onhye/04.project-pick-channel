@@ -1,9 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import "./Login.css";
 
 class Login extends Component {
+	userIdInput = createRef();
+	userPwInput = createRef();
+
 	render() {
-		const { data } = this.props;
+		const { vaildAccount, userId, userPw, onChange, onCheckVaild } = this.props;
 		return (
 			<section className='projectSection'>
 				<div className='sectionTitle'>
@@ -11,12 +14,12 @@ class Login extends Component {
 				</div>
 				<div className='sectionCont'>
 					<div className="loginBox">
-						<form>
+						<form onSubmit={onCheckVaild}>
 							<dl className="loginList">
-								<dt><label htmlFor="userName">아이디</label></dt>
+								<dt><label htmlFor="userId">아이디</label></dt>
 								<dd>
 									<div className="projectInput">
-										<input type="text" className="projectInputText" id="userName" name="uerName" placeholder="이메일을 입력해주세요." />
+										<input type="text" className="projectInputText" id="userId" value={userId} name="userId" onChange={onChange} ref={this.userIdInput} placeholder="비밀번호를 입력해주세요." />
 									</div>
 								</dd>
 							</dl>
@@ -24,11 +27,11 @@ class Login extends Component {
 								<dt><label htmlFor="userPw">비밀번호</label></dt>
 								<dd>
 									<div className="projectInput">
-										<input type="password" className="projectInputText" id="userPw" name="userPw" placeholder="비밀번호를 입력해주세요." />
-										<span className="projectInvaildText">사용할 수 없는 비밀번호입니다.</span>
+										<input type="password" className="projectInputText" id="userPw" value={userPw} name="userPw" onChange={onChange} ref={this.userPwInput} placeholder="비밀번호를 입력해주세요." />
 									</div>
 								</dd>
 							</dl>
+							{!vaildAccount && <span className="projectInvaildText">아이디와 비밀번호를 입력해주세요.</span>}
 							<button type="submit" className="loginBtn"><span>로그인</span></button>
 						</form>
 					</div>
