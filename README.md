@@ -43,4 +43,11 @@ React, Axios, Route, JQuery, Css
 - 로그인 페이지 사용자 인증 기능 구현 완료 (`checkUserAccount` 추가)
 - 아이디, 비밀번호 유효성 검사 추가
 
+**07.30**
+
+- 로그인 완료 시 user 채널 리스트 정보 불러와 노출
+- 데이터 구조 수정
+
 ## Link.
+
+https://yo-onhye.github.io/04.project-pick-channel

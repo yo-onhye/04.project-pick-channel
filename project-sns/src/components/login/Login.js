@@ -31,7 +31,7 @@ class Login extends Component {
 									</div>
 								</dd>
 							</dl>
-							{!vaildAccount && <span className="projectInvaildText">아이디와 비밀번호를 입력해주세요.</span>}
+							{!vaildAccount && <span className="projectInvaildText">아이디와 비밀번호를 확인해주세요.</span>}
 							<button type="submit" className="loginBtn"><span>로그인</span></button>
 						</form>
 					</div>

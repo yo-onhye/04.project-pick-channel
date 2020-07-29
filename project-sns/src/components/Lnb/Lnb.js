@@ -23,18 +23,20 @@ class Lnb extends Component {
 							<button type='submit' className='projectLnbBtn'>추가하기</button>
 						</div>
 					</form>
-					<ul className='projectChannelList'>
-						{data.map((d) => {
-							return (
-								<li key={d.id}>
-									<p>{d.channelName}</p>
-									<button type='button' className='ChannelRemoveBtn' onClick={() => onDelete(d.id)}>
-										<span className='blind'>삭제하기</span>
-									</button>
-								</li>
-							);
-						})}
-					</ul>
+					{data !== false && 
+						<ul className='projectChannelList'>
+							{data.map((d) => {
+								return (
+									<li key={d.id}>
+										<p>{d.channelName}</p>
+										<button type='button' className='ChannelRemoveBtn' onClick={() => onDelete(d.id)}>
+											<span className='blind'>삭제하기</span>
+										</button>
+									</li>
+								);
+							})}
+						</ul>
+					}
 					<Link to="/04.project-pick-channel" className="NavloginBtn">로그인</Link>
 				</div>
 			</div>

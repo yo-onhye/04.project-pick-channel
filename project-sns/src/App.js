@@ -14,30 +14,38 @@ class App extends Component {
 		userPw: "",
 		channelId: "",
 		channelName: "",
-		channelDatas: [
-			{
-				id: 0,
-				channelId: "PLr0T5CaHaPwVVVUeriESL3fyfF3eRUuHr",
-				channelName: "[🧑‍⚕️슬기로운 의사생활] 미도와 파라솔",
-			},
-			{
-				id: 1,
-				channelId: "PLdyB3s37qpTPuJSn-LjZqBFuf7u-XmA1z",
-				channelName: "사이코지만 괜찮아",
-			},
-		],
-		userDatas: [
+		userLists: [
 			{
 				dataId: 0,
 				userDataId: "user111",
 				userDataPw: "user111!",
+				channelDatas: [
+					{
+						id: 0,
+						channelId: "PLr0T5CaHaPwVVVUeriESL3fyfF3eRUuHr",
+						channelName: "[🧑‍⚕️슬기로운 의사생활] 미도와 파라솔",
+					},
+					{
+						id: 1,
+						channelId: "PLdyB3s37qpTPuJSn-LjZqBFuf7u-XmA1z",
+						channelName: "사이코지만 괜찮아",
+					},
+				],
 			},
 			{
 				dataId: 1,
 				userDataId: "user222",
 				userDataPw: "user222!",
+				channelDatas: [
+					{
+						id: 0,
+						channelId: "PLr0T5CaHaPwVVVUeriESL3fyfF3eRUuHr",
+						channelName: "[🧑‍⚕️슬기로운 의사생활] 미도와 파라솔",
+					},
+				],
 			},
 		],
+		userDatas: null,
 		vaildAccount: true,
 		isShow: false,
 	};
@@ -45,9 +53,10 @@ class App extends Component {
 	checkUserAccount = (e) => {
 		e.preventDefault();
 
-		const { userDatas, userId, userPw } = this.state;
+		const { userLists, userId, userPw, userDatas } = this.state;
 		if (userId !== "" && userPw !== "") {
-			const userData = userDatas.find((userData) => userData.userDataId === userId && userData.userDataPw === userPw);
+			const userData = userLists.find((userData) => userData.userDataId === userId && userData.userDataPw === userPw);
+
 			if (userData === undefined) {
 				this.setState({
 					vaildAccount: false,
@@ -55,6 +64,7 @@ class App extends Component {
 			} else {
 				this.setState({
 					vaildAccount: true,
+					userDatas: userLists.filter((userData) => userData.userDataId === userId),
 				});
 			}
 			return userData;
@@ -112,7 +122,9 @@ class App extends Component {
 	};
 
 	render() {
-		const { isShow, userId, userPw, vaildAccount, channelId, channelName, channelDatas, userDatas } = this.state;
+		const { isShow, userId, userPw, vaildAccount, channelId, channelName, userLists, userDatas } = this.state;
+
+		const channelDatas = userDatas !== null && userDatas[0].channelDatas;
 		return (
 			<div className='projectMain'>
 				<div className='projcetLogo'>
@@ -121,7 +133,7 @@ class App extends Component {
 					</h1>
 				</div>
 				<nav className='projcetNav'>
-					<ul className='projcetNavList'>
+					{userDatas !== null && <ul className='projcetNavList'>
 						{channelDatas.map((d) => {
 							return (
 								<li key={d.id}>
@@ -131,14 +143,14 @@ class App extends Component {
 								</li>
 							);
 						})}
-					</ul>
+					</ul>}
 				</nav>
 				<OutsideClickHandler onOutsideClick={isShow && this.handleLnb}>
 					<Lnb channelId={channelId} channelName={channelName} data={channelDatas} isShow={isShow} onActiveLnb={this.handleLnb} onInsert={this.handleInsert} onChange={this.handleChange} onDelete={this.handleDelete} />
 				</OutsideClickHandler>
 				<Switch>
-					<Route exact path='/04.project-pick-channel' render={() => <Login data={userDatas} userId={userId} userPw={userPw} vaildAccount={vaildAccount} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} />
-					{channelDatas.map((d) => {
+					<Route exact path='/04.project-pick-channel' render={() => <Login data={userLists} userId={userId} userPw={userPw} vaildAccount={vaildAccount} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} />
+					{userDatas !== null && channelDatas.map((d) => {
 						return <Route path={`/04.project-pick-channel/${d.id}`} render={() => <Youtube channelName={d.channelName} channelId={d.channelId} />} />;
 					})}
 					<Route render={() => <div className='projectError'>404 NOT FOUND :(</div>} />
