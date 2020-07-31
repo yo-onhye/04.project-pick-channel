@@ -46,6 +46,7 @@ class App extends Component {
 			},
 		],
 		userDatas: null,
+		channelDatas: null,
 		vaildAccount: true,
 		isShow: false,
 	};
@@ -53,7 +54,7 @@ class App extends Component {
 	checkUserAccount = (e) => {
 		e.preventDefault();
 
-		const { userLists, userId, userPw, userDatas } = this.state;
+		const { userLists, userId, userPw } = this.state;
 		if (userId !== "" && userPw !== "") {
 			const userData = userLists.find((userData) => userData.userDataId === userId && userData.userDataPw === userPw);
 
@@ -64,7 +65,7 @@ class App extends Component {
 			} else {
 				this.setState({
 					vaildAccount: true,
-					userDatas: userLists.filter((userData) => userData.userDataId === userId),
+					userDatas: userLists.find((userData) => userData.userDataId === userId),
 				});
 			}
 			return userData;
@@ -117,14 +118,22 @@ class App extends Component {
 
 	handleDelete = (id) => {
 		this.setState({
-			channelDatas: this.state.channelDatas.filter((user) => user.id !== id),
+			userDatas: this.state.userDatas.filter((user) => user.id !== id),
 		});
 	};
 
-	render() {
-		const { isShow, userId, userPw, vaildAccount, channelId, channelName, userLists, userDatas } = this.state;
+	componentDidUpdate(prevProps, prevState) {
+		const { userDatas } = this.state;
+		if (this.props.userDatas !== prevProps.userDatas) {
+			this.setState({
+				channelDatas: userDatas !== null && userDatas.channelDatas,
+			});
+		}
+	}
 
-		const channelDatas = userDatas !== null && userDatas[0].channelDatas;
+	render() {
+		const { isShow, userId, userPw, vaildAccount, channelId, channelName, userLists, userDatas, channelDatas } = this.state;
+
 		return (
 			<div className='projectMain'>
 				<div className='projcetLogo'>

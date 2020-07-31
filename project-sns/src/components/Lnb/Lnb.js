@@ -23,7 +23,7 @@ class Lnb extends Component {
 							<button type='submit' className='projectLnbBtn'>추가하기</button>
 						</div>
 					</form>
-					{data !== false && 
+					{/* {data !== null && 
 						<ul className='projectChannelList'>
 							{data.map((d) => {
 								return (
@@ -36,7 +36,7 @@ class Lnb extends Component {
 								);
 							})}
 						</ul>
-					}
+					} */}
 					<Link to="/04.project-pick-channel" className="NavloginBtn">로그인</Link>
 				</div>
 			</div>
