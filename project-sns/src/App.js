@@ -46,6 +46,7 @@ class App extends Component {
 			},
 		],
 		userDatas: null,
+		channelDatas: null,
 		vaildAccount: true,
 		isShow: false,
 	};
@@ -71,6 +72,17 @@ class App extends Component {
 		} else {
 			this.setState({
 				vaildAccount: false,
+			});
+		}
+	};
+
+	handleOutsideClick = (e) => {
+		e.preventDefault();
+		const { isShow } = this.state;
+
+		if (isShow) {
+			this.setState({
+				isShow: false,
 			});
 		}
 	};
@@ -121,10 +133,18 @@ class App extends Component {
 		});
 	};
 
-	render() {
-		const { isShow, userId, userPw, vaildAccount, channelId, channelName, userLists, userDatas } = this.state;
+	componentDidUpdate(prevProps, prevState) {
+		if (this.state.userDatas !== prevProps.userDatas) {
+			if (this.state.userDatas !== null) {
+				this.setState({
+					channelDatas: this.state.userDatas[0].channelDatas,
+				});
+			}
+		}
+	}
 
-		const channelDatas = userDatas !== null && userDatas[0].channelDatas;
+	render() {
+		const { isShow, userId, userPw, vaildAccount, channelId, channelName, userLists, userDatas, channelDatas } = this.state;
 
 		return (
 			<div className='projectMain'>
@@ -134,26 +154,29 @@ class App extends Component {
 					</h1>
 				</div>
 				<nav className='projcetNav'>
-					{userDatas !== null && <ul className='projcetNavList'>
-						{channelDatas.map((d) => {
-							return (
-								<li key={d.id}>
-									<NavLink to={`/04.project-pick-channel/${d.id}`} activeClassName='active'>
-										<span>#</span> {d.channelName}
-									</NavLink>
-								</li>
-							);
-						})}
-					</ul>}
+					{userDatas !== null && (
+						<ul className='projcetNavList'>
+							{channelDatas.map((d) => {
+								return (
+									<li key={d.id}>
+										<NavLink to={`/04.project-pick-channel/${d.id}`} activeClassName='active'>
+											<span>#</span> {d.channelName}
+										</NavLink>
+									</li>
+								);
+							})}
+						</ul>
+					)}
 				</nav>
-				<OutsideClickHandler onOutsideClick={isShow && this.handleLnb}>
+				<OutsideClickHandler onOutsideClick={this.handleOutsideClick}>
 					<Lnb channelId={channelId} channelName={channelName} data={channelDatas} isShow={isShow} onActiveLnb={this.handleLnb} onInsert={this.handleInsert} onChange={this.handleChange} onDelete={this.handleDelete} />
 				</OutsideClickHandler>
 				<Switch>
 					<Route exact path='/04.project-pick-channel' render={() => <Login data={userLists} userId={userId} userPw={userPw} vaildAccount={vaildAccount} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} />
-					{userDatas !== null && channelDatas.map((d) => {
-						return <Route path={`/04.project-pick-channel/${d.id}`} render={() => <Youtube channelName={d.channelName} channelId={d.channelId} />} />;
-					})}
+					{userDatas !== null &&
+						channelDatas.map((d) => {
+							return <Route path={`/04.project-pick-channel/${d.id}`} render={() => <Youtube channelName={d.channelName} channelId={d.channelId} />} />;
+						})}
 					<Route render={() => <div className='projectError'>404 NOT FOUND :(</div>} />
 				</Switch>
 			</div>

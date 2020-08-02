@@ -431,6 +431,9 @@ legend:before {
 }
 
 @media screen and (max-width: 768px) {
+	.loginBox {
+		padding: 30px 20px;
+	}
 	.myfeedList li {
 		width: 50%;
 	}
