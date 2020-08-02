@@ -46,7 +46,6 @@ class App extends Component {
 			},
 		],
 		userDatas: null,
-		channelDatas: null,
 		vaildAccount: true,
 		isShow: false,
 	};
@@ -65,7 +64,7 @@ class App extends Component {
 			} else {
 				this.setState({
 					vaildAccount: true,
-					userDatas: userLists.find((userData) => userData.userDataId === userId),
+					userDatas: userLists.filter((userData) => userData.userDataId === userId),
 				});
 			}
 			return userData;
@@ -118,21 +117,14 @@ class App extends Component {
 
 	handleDelete = (id) => {
 		this.setState({
-			userDatas: this.state.userDatas.filter((user) => user.id !== id),
+			channelDatas: this.state.channelDatas.filter((user) => user.id !== id),
 		});
 	};
 
-	componentDidUpdate(prevProps, prevState) {
-		const { userDatas } = this.state;
-		if (this.props.userDatas !== prevProps.userDatas) {
-			this.setState({
-				channelDatas: userDatas !== null && userDatas.channelDatas,
-			});
-		}
-	}
-
 	render() {
-		const { isShow, userId, userPw, vaildAccount, channelId, channelName, userLists, userDatas, channelDatas } = this.state;
+		const { isShow, userId, userPw, vaildAccount, channelId, channelName, userLists, userDatas } = this.state;
+
+		const channelDatas = userDatas !== null && userDatas[0].channelDatas;
 
 		return (
 			<div className='projectMain'>

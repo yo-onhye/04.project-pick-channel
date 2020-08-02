@@ -48,6 +48,11 @@ React, Axios, Route, JQuery, Css
 - 로그인 완료 시 user 채널 리스트 정보 불러와 노출
 - 데이터 구조 수정
 
+**08.02**
+
+- 데이터 구조 수정 후 data.map()관련 오류발생
+- 롤백 후 해결방안 모색 중
+
 ## Link.
 
 https://yo-onhye.github.io/04.project-pick-channel
