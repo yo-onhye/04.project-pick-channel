@@ -23,7 +23,7 @@ class Lnb extends Component {
 							<button type='submit' className='projectLnbBtn'>추가하기</button>
 						</div>
 					</form>
-					{data !== false && 
+					{data !== null && 
 						<ul className='projectChannelList'>
 							{data.map((d) => {
 								return (

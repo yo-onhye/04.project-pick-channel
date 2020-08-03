@@ -41,12 +41,6 @@ class YoutubeList extends Component {
 		this.getData();
 	}
 
-	componentDidUpdate(prevProps, prevState) {
-		if (this.props.channelId !== prevProps.channelId) {
-			this.getData();
-		}
-	}
-
 	render() {
 		const { youtubeDatas, loading } = this.state;
 		const { channelName } = this.props;

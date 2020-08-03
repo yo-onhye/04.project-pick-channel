@@ -53,6 +53,10 @@ React, Axios, Route, JQuery, Css
 - 데이터 구조 수정 후 data.map()관련 오류발생
 - 롤백 후 해결방안 모색 중
 
+**08.03**
+
+- 롤백 후 데이터 가져오는 부분 이외 로그인, 회원가입 우선 진행 예정
+
 ## Link.
 
 https://yo-onhye.github.io/04.project-pick-channel
