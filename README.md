@@ -57,6 +57,10 @@ React, Axios, Route, JQuery, Css
 
 - 롤백 후 데이터 가져오는 부분 이외 로그인, 회원가입 우선 진행 예정
 
+**08.05**
+
+- 회원가입 페이지 생성
+
 ## Link.
 
 https://yo-onhye.github.io/04.project-pick-channel

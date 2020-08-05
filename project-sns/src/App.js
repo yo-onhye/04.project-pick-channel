@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { Route, NavLink, Switch } from "react-router-dom";
 import OutsideClickHandler from "react-outside-click-handler";
 import Login from "./components/login";
-import Lnb from "./components/lnb";
+import Signup from "./components/signup";
+import Lnb from "./components";
 import Youtube from "./components/youtube";
-import "./App.css";
+import "./App.css"
 
 class App extends Component {
 	id = 2;
@@ -12,6 +13,10 @@ class App extends Component {
 	state = {
 		userId: "",
 		userPw: "",
+		signupId: '',
+		signupPw: '',
+		signupRepw: "",
+		signupName: "",
 		channelId: "",
 		channelName: "",
 		userLists: [
@@ -144,7 +149,7 @@ class App extends Component {
 	}
 
 	render() {
-		const { isShow, userId, userPw, vaildAccount, channelId, channelName, userLists, userDatas, channelDatas } = this.state;
+		const { isShow, signupId, signupPw, signupRepw, signupName, userId, userPw, vaildAccount, channelId, channelName, userLists, userDatas, channelDatas } = this.state;
 
 		return (
 			<div className='projectMain'>
@@ -172,11 +177,15 @@ class App extends Component {
 					<Lnb channelId={channelId} channelName={channelName} data={channelDatas} isShow={isShow} onActiveLnb={this.handleLnb} onInsert={this.handleInsert} onChange={this.handleChange} onDelete={this.handleDelete} />
 				</OutsideClickHandler>
 				<Switch>
-					<Route exact path='/04.project-pick-channel' render={() => <Login data={userLists} userId={userId} userPw={userPw} vaildAccount={vaildAccount} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} />
-					{userDatas !== null &&
-						channelDatas.map((d) => {
-							return <Route path={`/04.project-pick-channel/${d.id}`} render={() => <Youtube channelName={d.channelName} channelId={d.channelId} />} />;
+					<Route exact path='/04.project-pick-channel' render={() => <Signup data={userLists} signupId={signupId} signupPw={signupPw} signupRepw={signupRepw} signupName={signupName} vaildAccount={vaildAccount} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} />
+					<Route path='/04.project-pick-channel/login' render={() => <Login data={userLists} userId={userId} userPw={userPw} vaildAccount={vaildAccount} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} /> 
+					{/* 
+						<Route exact path='/04.project-pick-channel' render={() => <Login data={userLists} userId={userId} userPw={userPw} vaildAccount={vaildAccount} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} /> 
+						{userDatas !== null &&
+							channelDatas.map((d) => {
+								return <Route path={`/04.project-pick-channel/${d.id}`} render={() => <Youtube channelName={d.channelName} channelId={d.channelId} />} />;
 						})}
+					*/}
 					<Route render={() => <div className='projectError'>404 NOT FOUND :(</div>} />
 				</Switch>
 			</div>
