@@ -53,6 +53,8 @@ class App extends Component {
 		userDatas: null,
 		channelDatas: null,
 		vaildAccount: true,
+		vaildInfo: true,
+		validText: '',
 		isShow: false,
 	};
 
@@ -77,6 +79,37 @@ class App extends Component {
 		} else {
 			this.setState({
 				vaildAccount: false,
+			});
+		}
+	};
+
+	checkUserJoinInfo = (e) => {
+		e.preventDefault();
+
+		const { signupId, signupPw, signupRepw, signupName } = this.state;
+		if (signupId === "" || signupPw === "" || signupRepw === "" || signupName === "") {
+			this.setState({
+				vaildInfo: false,
+				validText: '입력되지 않은 값이 있습니다. 확인해주세요.'
+			});
+		} else if (signupId.length < 5) {
+			this.setState({
+				vaildInfo: false,
+				validText: '아이디는 6자 이상이어야 합니다.'
+			});
+		} else if (signupPw.length < 7) {
+			this.setState({
+				vaildInfo: false,
+				validText: '비밀번호는 8자 이상이어야 합니다.'
+			});
+		} else if (signupPw !== signupRepw) {
+			this.setState({
+				vaildInfo: false,
+				validText: '비밀번호가 일치하지 않습니다.'
+			});
+		} else {
+			this.setState({
+				vaildInfo: false,
 			});
 		}
 	};
@@ -149,7 +182,7 @@ class App extends Component {
 	}
 
 	render() {
-		const { isShow, signupId, signupPw, signupRepw, signupName, userId, userPw, vaildAccount, channelId, channelName, userLists, userDatas, channelDatas } = this.state;
+		const { isShow, signupId, signupPw, signupRepw, signupName, vaildInfo, validText, checkUserJoinInfo, userId, userPw, vaildAccount, channelId, channelName, userLists, userDatas, channelDatas } = this.state;
 
 		return (
 			<div className='projectMain'>
@@ -177,7 +210,7 @@ class App extends Component {
 					<Lnb channelId={channelId} channelName={channelName} data={channelDatas} isShow={isShow} onActiveLnb={this.handleLnb} onInsert={this.handleInsert} onChange={this.handleChange} onDelete={this.handleDelete} />
 				</OutsideClickHandler>
 				<Switch>
-					<Route exact path='/04.project-pick-channel' render={() => <Signup data={userLists} signupId={signupId} signupPw={signupPw} signupRepw={signupRepw} signupName={signupName} vaildAccount={vaildAccount} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} />
+					<Route exact path='/04.project-pick-channel' render={() => <Signup data={userLists} signupId={signupId} signupPw={signupPw} signupRepw={signupRepw} signupName={signupName} validText={validText} vaildInfo={vaildInfo} checkJoinInfo={checkUserJoinInfo} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} />
 					<Route path='/04.project-pick-channel/login' render={() => <Login data={userLists} userId={userId} userPw={userPw} vaildAccount={vaildAccount} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} /> 
 					{/* 
 						<Route exact path='/04.project-pick-channel' render={() => <Login data={userLists} userId={userId} userPw={userPw} vaildAccount={vaildAccount} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} /> 

@@ -8,7 +8,8 @@ class Login extends Component {
 	signupNameInput = createRef();
 
 	render() {
-		const { vaildAccount, signupId, signupPw, signupRepw, signupName, onChange, onCheckVaild } = this.props;
+		const { signupId, signupPw, signupRepw, signupName, validText, vaildInfo, onChange, checkJoinInfo } = this.props;
+			console.log(signupId);
 		return (
 			<section className='projectSection'>
 				<div className='sectionTitle'>
@@ -16,12 +17,12 @@ class Login extends Component {
 				</div>
 				<div className='sectionCont'>
 					<div className="signupBox">
-						<form onSubmit={onCheckVaild}>
+						<form onSubmit={checkJoinInfo}>
 							<dl className="signupList">
 								<dt><label htmlFor="signupId">아이디</label></dt>
 								<dd>
 									<div className="projectInput">
-										<input type="text" className="projectInputText" id="signupId" value={signupId} name="signupId" onChange={onChange} ref={this.signupIdInput} placeholder="비밀번호를 입력해주세요." />
+										<input type="text" className="projectInputText" id="signupId" value={signupId} name="signupId" onChange={onChange} ref={this.signupIdInput} placeholder="아이디를 입력해주세요." />
 									</div>
 								</dd>
 							</dl>
@@ -49,7 +50,7 @@ class Login extends Component {
 									</div>
 								</dd>
 							</dl>
-							{!vaildAccount && <span className="projectInvaildText">입력되지 않은 값이 있습니다. 확인해주세요.</span>}
+							{vaildInfo && <span className="projectInvaildText">{validText}</span>}
 							<button type="submit" className="signupBtn"><span>회원가입</span></button>
 						</form>
 					</div>
