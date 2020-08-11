@@ -8,8 +8,7 @@ class Login extends Component {
 	signupNameInput = createRef();
 
 	render() {
-		const { signupId, signupPw, signupRepw, signupName, validText, vaildInfo, onChange, checkJoinInfo } = this.props;
-			console.log(signupId);
+		const { signupId, signupPw, signupRepw, signupName, validText, vaildInfo, onChange, onInsertInfo } = this.props;
 		return (
 			<section className='projectSection'>
 				<div className='sectionTitle'>
@@ -17,12 +16,12 @@ class Login extends Component {
 				</div>
 				<div className='sectionCont'>
 					<div className="signupBox">
-						<form onSubmit={checkJoinInfo}>
+						<form onSubmit={onInsertInfo}>
 							<dl className="signupList">
 								<dt><label htmlFor="signupId">아이디</label></dt>
 								<dd>
 									<div className="projectInput">
-										<input type="text" className="projectInputText" id="signupId" value={signupId} name="signupId" onChange={onChange} ref={this.signupIdInput} placeholder="아이디를 입력해주세요." />
+										<input type="text" className="projectInputText" id="signupId" value={signupId} name="signupId" onChange={onChange} ref={this.signupIdInput} placeholder="아이디를 입력해주세요. (6자 이상)" />
 									</div>
 								</dd>
 							</dl>
@@ -30,7 +29,7 @@ class Login extends Component {
 								<dt><label htmlFor="signupPw">비밀번호</label></dt>
 								<dd>
 									<div className="projectInput">
-										<input type="password" className="projectInputText" id="signupPw" value={signupPw} name="signupPw" onChange={onChange} ref={this.signupPwInput} placeholder="비밀번호를 입력해주세요." />
+										<input type="password" className="projectInputText" id="signupPw" value={signupPw} name="signupPw" onChange={onChange} ref={this.signupPwInput} placeholder="비밀번호를 입력해주세요. (8자 이상)" />
 									</div>
 								</dd>
 							</dl>
@@ -50,7 +49,7 @@ class Login extends Component {
 									</div>
 								</dd>
 							</dl>
-							{vaildInfo && <span className="projectInvaildText">{validText}</span>}
+							{!vaildInfo && <span className="projectInvaildText">{validText}</span>}
 							<button type="submit" className="signupBtn"><span>회원가입</span></button>
 						</form>
 					</div>

@@ -65,6 +65,10 @@ React, Axios, Route, JQuery, Css
 
 - 회원가입 입력서식 유효성 검사 추가
 
+**08.12**
+
+- 회원가입 액션 추가
+
 ## Link.
 
 https://yo-onhye.github.io/04.project-pick-channel

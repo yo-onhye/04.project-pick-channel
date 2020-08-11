@@ -38,6 +38,7 @@ class Lnb extends Component {
 						</ul>
 					} */}
 					<Link to="/04.project-pick-channel/login" className="NavloginBtn">로그인</Link>
+					<Link to="/04.project-pick-channel/signup" className="NavjoinBtn">회원가입</Link>
 				</div>
 			</div>
 		);
