@@ -52,8 +52,8 @@ class App extends Component {
 				],
 			},
 		],
+		loginId: '',
 		userDatas: null,
-		channelDatas: null,
 		vaildAccount: true,
 		vaildInfo: true,
 		validText: '',
@@ -73,8 +73,9 @@ class App extends Component {
 				});
 			} else {
 				this.setState({
-					vaildAccount: true,
+					loginId: userId,
 					userDatas: userLists.filter((userData) => userData.userDataId === userId),
+					vaildAccount: true,
 				});
 			}
 			return userData;
@@ -186,18 +187,18 @@ class App extends Component {
 		});
 	};
 
-	componentDidUpdate(prevProps, prevState) {
-		if (this.state.userDatas !== prevProps.userDatas) {
-			if (this.state.userDatas !== null) {
-				this.setState({
-					channelDatas: this.state.userDatas[0].channelDatas,
-				});
-			}
-		}
-	}
+	// componentDidUpdate(prevProps, prevState) {
+	// 	if (this.state.userDatas !== prevProps.userDatas) {
+	// 		// if (this.state.userDatas !== null) {
+	// 			this.setState({
+	// 				channelDatas: this.state.userDatas[0].channelDatas,
+	// 			});
+	// 		// }
+	// 	}
+	// }
 
 	render() {
-		const { isShow, signupId, signupPw, signupRepw, signupName, vaildInfo, validText, userId, userPw, vaildAccount, channelId, channelName, userLists, userDatas, channelDatas } = this.state;
+		const { isShow, signupId, signupPw, signupRepw, signupName, vaildInfo, validText, userId, userPw, vaildAccount, channelId, channelName, userLists, userDatas } = this.state;
 
 		return (
 			<div className='projectMain'>
@@ -209,7 +210,7 @@ class App extends Component {
 				<nav className='projcetNav'>
 					{userDatas !== null && (
 						<ul className='projcetNavList'>
-							{channelDatas.map((d) => {
+							{userDatas[0].channelDatas.map((d) => {
 								return (
 									<li key={d.id}>
 										<NavLink to={`/04.project-pick-channel/${d.id}`} activeClassName='active'>
@@ -222,19 +223,17 @@ class App extends Component {
 					)}
 				</nav>
 				<OutsideClickHandler onOutsideClick={this.handleOutsideClick}>
-					<Lnb channelId={channelId} channelName={channelName} data={channelDatas} isShow={isShow} onActiveLnb={this.handleLnb} onInsert={this.handleChannelInsert} onChange={this.handleChange} onDelete={this.handleChannelDelete} />
+					<Lnb channelId={channelId} channelName={channelName} data={userDatas} isShow={isShow} onActiveLnb={this.handleLnb} onInsert={this.handleChannelInsert} onChange={this.handleChange} onDelete={this.handleChannelDelete} />
 				</OutsideClickHandler>
 				<Switch>
 					<Route exact path='/04.project-pick-channel' render={() => <Signup data={userLists} signupId={signupId} signupPw={signupPw} signupRepw={signupRepw} signupName={signupName} validText={validText} vaildInfo={vaildInfo} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} onInsertInfo={this.handleUserInsert} />} />
 					<Route path='/04.project-pick-channel/login' render={() => <Login data={userLists} userId={userId} userPw={userPw} vaildAccount={vaildAccount} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} />
 					<Route path='/04.project-pick-channel/signup' render={() => <Signup data={userLists} signupId={signupId} signupPw={signupPw} signupRepw={signupRepw} signupName={signupName} validText={validText} vaildInfo={vaildInfo} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} onInsertInfo={this.handleUserInsert} />} /> 
-					{/* 
-						<Route exact path='/04.project-pick-channel' render={() => <Login data={userLists} userId={userId} userPw={userPw} vaildAccount={vaildAccount} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} /> 
-						{userDatas !== null &&
-							channelDatas.map((d) => {
-								return <Route path={`/04.project-pick-channel/${d.id}`} render={() => <Youtube channelName={d.channelName} channelId={d.channelId} />} />;
-						})}
-					*/}
+					<Route exact path='/04.project-pick-channel' render={() => <Login data={userLists} userId={userId} userPw={userPw} vaildAccount={vaildAccount} onChange={this.handleChange} onCheckVaild={this.checkUserAccount} />} /> 
+					{userDatas !== null &&
+						userDatas[0].channelDatas.map((d) => {
+							return <Route path={`/04.project-pick-channel/${d.id}`} render={() => <Youtube channelName={d.channelName} channelId={d.channelId} />} />;
+					})}
 					<Route render={() => <div className='projectError'>404 NOT FOUND :(</div>} />
 				</Switch>
 			</div>

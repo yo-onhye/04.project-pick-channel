@@ -69,6 +69,10 @@ React, Axios, Route, JQuery, Css
 
 - 회원가입 액션 추가
 
+**08.14**
+
+- 로그인 시 해당 유저 데이터 연동 완료
+
 ## Link.
 
 https://yo-onhye.github.io/04.project-pick-channel

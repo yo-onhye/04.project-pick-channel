@@ -23,9 +23,9 @@ class Lnb extends Component {
 							<button type='submit' className='projectLnbBtn'>추가하기</button>
 						</div>
 					</form>
-					{/* {data !== null && 
+					{data !== null && 
 						<ul className='projectChannelList'>
-							{data.map((d) => {
+							{data[0].channelDatas.map((d) => {
 								return (
 									<li key={d.id}>
 										<p>{d.channelName}</p>
@@ -36,7 +36,7 @@ class Lnb extends Component {
 								);
 							})}
 						</ul>
-					} */}
+					}
 					<Link to="/04.project-pick-channel/login" className="NavloginBtn">로그인</Link>
 					<Link to="/04.project-pick-channel/signup" className="NavjoinBtn">회원가입</Link>
 				</div>
